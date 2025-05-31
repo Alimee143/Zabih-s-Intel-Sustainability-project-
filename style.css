@@ -41,6 +41,7 @@ header img {
 
 .timeline-card:hover {
   transform: scale(1.05);
+  color: #0071c5;
 }
 
 .timeline-card img {
