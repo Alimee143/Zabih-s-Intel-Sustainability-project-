@@ -9,7 +9,7 @@ header {
   text-align: center;
   padding: 2rem 1rem;
   background: #ffffff;
-  color: white;
+  color: #0071c5;
 }
 
 header img {
@@ -25,6 +25,7 @@ header img {
   gap: 1rem;
   padding: 2rem;
   flex-wrap: nowrap;
+  border-radius: 30%;
 }
 
 .timeline-card {
