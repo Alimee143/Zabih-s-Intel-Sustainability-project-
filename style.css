@@ -20,45 +20,92 @@ header img {
 
 .timeline-container {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding: 2rem;
-  flex-wrap: nowrap;
-  
+  flex-wrap: nowrap;        /* cards in a row */
+  overflow-x: auto;         /* horizontal scroll if needed */
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
 
 .timeline-card {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
-  scroll-snap-align: start;
+  position: relative;
+  flex: 0 0 300px;          /* fixed width, no shrink */
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #f5f5f5;
   transition: transform 0.3s ease;
-  flex: 0 0 auto;
+  cursor: pointer;
 }
 
 .timeline-card:hover {
   transform: scale(1.05);
-  color: #0071c5;
 }
 
 .timeline-card img {
   width: 100%;
-  height: 150px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  display: block;
 }
 
+.timeline-card h3 {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 10px;
+  background: rgba(0, 51, 160, 0.85);
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.timeline-card p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 20px;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: none;
+  transition: 
+    color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    background-color 0.3s ease;
+  text-align: center;
+  z-index: 3;
+  pointer-events: none; /* prevent blocking hover */
+}
+
+.timeline-card:hover p {
+  color: white;
+  background-color: rgba(0, 51, 160, 0.7);
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+/* Responsive stacking on smaller screens */
 @media (max-width: 768px) {
   .timeline-container {
+    flex-wrap: wrap;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow-x: visible;
+    align-items: center;
   }
 
   .timeline-card {
-    width: 100%;
+    width: 90%;
+    flex: none;
     margin-bottom: 1rem;
   }
 }
