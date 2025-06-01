@@ -1,22 +1,110 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin: 20px;
   background: #f4f4f4;
-  color: #333;
+  color: #000000;
 }
 
 header {
   text-align: center;
-  padding: 2rem 1rem;
   background: #ffffff;
-  color: #0071c5;
+  color: #ffffff;
 }
 
 header img {
   width: 120px;
+  width: 100%;
   display: block;
   margin: 0 auto 1rem;
 }
+.hero {
+  position: relative;
+  background: #0071c5; /* Fallback color */
+  height: 80vh;
+  color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* stack logo and content vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10%;
+  z-index: 2;
+  box-sizing: border-box;
+}
+.content {
+  max-width: 800px;
+  z-index: 5;
+  margin-top: 0; /* remove if you want content closer to logo */
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+}
+
+.content p {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.data-bars {
+  position: relative; /* relative to overlay */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* above content */
+  margin-bottom: 1rem;
+}
+.bar.center-logo {
+  width: 200px; /* adjust as needed */
+  height: 200px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.bar.center-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1; /* fully visible */
+  animation: float 6s ease-in-out infinite alternate;
+}
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0071c5;
+  color: white;
+}
+
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5%);
+  }
+}
+
 
 .timeline-container {
   display: flex;
@@ -107,5 +195,59 @@ header img {
     width: 90%;
     flex: none;
     margin-bottom: 1rem;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 60px 20%;
+}
+
+.container.reverse {
+  flex-direction: row-reverse;
+}
+
+.text-section {
+  flex: 1;
+  padding: 1rem;
+}
+
+.image-section {
+  flex: 1;
+  padding: 1rem;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #0071c5;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container.reverse {
+    flex-direction: column;
+  }
+
+  .text-section, .image-section {
+    padding: 1rem 0;
   }
 }
